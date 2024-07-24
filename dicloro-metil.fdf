@@ -1,0 +1,97 @@
+SystemName       tubo GaN (10,0)
+SystemLabel      dicloro-metil
+NumberOfAtoms    15
+NumberOfSpecies  4 
+%block ChemicalSpeciesLabel
+ 1   6     C_gga
+ 2   17   Cl_gga
+ 3   8     O_gga
+ 4   1     H_gga
+%endblock ChemicalSpeciesLabel
+
+LatticeConstant 23.3226  Ang
+%block LatticeVectors
+2.0000  0.000   0.000
+0.000   2.000   0.000
+0.0000   0.000   1.000
+%endblock LatticeVectors
+
+%block kgrid_Monkhorst_Pack
+  2  0  0  0.0
+  0  2  0  0.0
+  0  0  5  0.0
+%endblock kgrid_Monkhorst_Pack
+
+%block BandLines
+1  0.000  0.000  0.000  \Gamma
+30 0.000  0.000  1.000  X
+%endblock BandLines
+
+AtomicCoordinatesFormat NotScaledCartesianAng
+AtomCoorFormatOut   NotScaledCartesianAng
+%block AtomicCoordinatesAndAtomicSpecies
+    2.25913408    6.19690649   15.42087926   3       1  O_gga
+   -2.83774716    6.37147635   15.10366856   2       2  Cl_gga
+   -0.12880852    6.27260734   15.22339062   1       3  C_gga
+    1.15640300    6.22608512   16.00720789   1       4  C_gga
+   -1.31403877    6.30582939   15.91834603   1       5  C_gga
+    1.10852240    6.21700424   17.49170749   1       6  C_gga
+   -1.40203492    6.29366111   17.42218974   1       7  C_gga
+   -0.07982496    6.25211739   18.16069198   1       8  C_gga
+   -0.17836901    6.25174191   19.88102706   2       9  Cl_gga
+   -2.48191084    6.31711438   18.02302183   3      10  O_gga
+   -0.02707528    6.29254864   13.72464641   1      11  C_gga
+   -0.25538042    7.31672821   13.33321174   4      12  H_gga
+   -0.76852709    5.59748149   13.26272185   4      13  H_gga
+    1.01010373    6.02405677   13.41820037   4      14  H_gga
+    2.08563662    6.18066365   18.01767806   4      15  H_gga
+%endblock AtomicCoordinatesAndAtomicSpecies
+
+PAO.BasisSize     DZP
+PAO.EnergyShift   0.04 eV
+MD.TypeOfRun      CG
+MD.NumCGsteps     1000
+MaxSCFIterations  150
+
+SpinPolarized     true
+
+MD.MaxForceTol    0.04 eV/Ang
+MeshCutoff        400.0 Ry
+DM.UseSaveDM      true
+UseSaveData       true
+MD.UseSaveXV      true
+MD.UseSaveCG      true
+DM.MixingWeight   0.10
+DM.NumberPulay    3
+WriteMullikenPop  1
+
+WriteCoorXmol       T
+WriteMDXmol         T
+WriteMDhistory      T
+
+#SaveRho                       true
+#SaveElectrostaticPotential    true
+#SaveTotalPotential            true
+
+
+%block LocalDensityOfStates
+ -6.56  -6.36   eV
+%endblock LocalDensityOfStates
+
+
+%block ProjectedDensityOfStates
+  -20.0  20.0   0.05  600 eV
+%endblock ProjectedDensityOfStates
+
+#%block Ps.lmax
+#  Ga_gga   1
+#   N_gga   1
+#%endblock Ps.lmax
+
+XC_functional  GGA
+XC_authors     PBE
+
+SolutionMethod diagon
+ElectronicTemperature  100 meV
+
+
